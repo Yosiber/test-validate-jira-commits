@@ -161,28 +161,32 @@ runs:
             FAILED=1
             continue
           fi
+        
+          echo "==== JIRA RESPONSE ===="
+          echo "$RESPONSE"
+          echo "======================="
 
           ISSUE_TYPE=$(echo "$RESPONSE" | jq -r '.fields.issuetype.name')
           ISSUE_STATUS=$(echo "$RESPONSE" | jq -r '.fields.status.name')
-
+          
           ISSUE_STATUS_NORMALIZED=$(echo "$ISSUE_STATUS" | tr '[:lower:]' '[:upper:]')
-
+        
           echo "Type: $ISSUE_TYPE | Status: $ISSUE_STATUS"
-
-          if [ "$ISSUE_TYPE" != "Story" ]; then
-            echo "ERROR: $ISSUE_KEY is type '$ISSUE_TYPE'. Only 'Story' is allowed."
+          
+          if [ "$ISSUE_TYPE" != "Tarea" ]; then
+            echo "ERROR: $ISSUE_KEY is type '$ISSUE_TYPE'. Only 'Tarea' is allowed."
+            FAILED=1
+           continue
+          fi
+          
+          if [ "$ISSUE_STATUS_NORMALIZED" != "NUEVO" ] \
+            && [ "$ISSUE_STATUS_NORMALIZED" != "EN CURSO" ]; then
+             echo "ERROR: $ISSUE_KEY has status '$ISSUE_STATUS'."
+            echo "Only 'Nuevo' and 'En Curso' are allowed."
             FAILED=1
             continue
           fi
-
-          if [ "$ISSUE_STATUS_NORMALIZED" != "NEW" ] \
-             && [ "$ISSUE_STATUS_NORMALIZED" != "IN PROGRESS" ]; then
-              echo "ERROR: $ISSUE_KEY has status '$ISSUE_STATUS'."
-              echo "Only 'New' and 'In Progress' are allowed."
-              FAILED=1
-              continue
-          fi
-
+        
           echo "PASSED: $ISSUE_KEY"
 
         done < /tmp/messages_to_process.txt
