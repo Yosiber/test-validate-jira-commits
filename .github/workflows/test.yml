@@ -29,7 +29,7 @@ jobs:
       - name: Validate Jira Commits
         uses: ./.github/actions/validate-jira-commits
         with:
-          workflow-name: "test-jira-validation.yml"
+          workflow-name: "345642018"
           jira-url: ${{ secrets.JIRA_URL }}
           jira-email: ${{ secrets.JIRA_EMAIL }}
           jira-token: ${{ secrets.JIRA_TOKEN }}
