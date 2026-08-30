@@ -173,16 +173,16 @@ runs:
 
           echo "Type: $ISSUE_TYPE | Status: $ISSUE_STATUS"
 
-          if [ "$ISSUE_TYPE" != "Story" ]; then
-            echo "ERROR: $ISSUE_KEY is type '$ISSUE_TYPE'. Only 'Story' is allowed."
+          if [ "$ISSUE_TYPE" != "Task" ]; then
+            echo "ERROR: $ISSUE_KEY is type '$ISSUE_TYPE'. Only 'Task' is allowed."
             FAILED=1
             continue
           fi
 
-          if [ "$ISSUE_STATUS_NORMALIZED" != "NEW" ] \
-             && [ "$ISSUE_STATUS_NORMALIZED" != "IN PROGRESS" ]; then
+          if [ "$ISSUE_STATUS_NORMALIZED" != "Nuevo" ] \
+             && [ "$ISSUE_STATUS_NORMALIZED" != "En Curso" ]; then
               echo "ERROR: $ISSUE_KEY has status '$ISSUE_STATUS'."
-              echo "Only 'New' and 'In Progress' are allowed."
+              echo "Only 'New' and 'En Curso' are allowed."
               FAILED=1
               continue
           fi
