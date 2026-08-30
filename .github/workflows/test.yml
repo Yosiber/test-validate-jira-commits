@@ -1,0 +1,21 @@
+name: Test Jira Validation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate Jira Commits
+        uses: ./.github/actions/validate-jira-commits
+        with:
+          workflow-name: "Test Jira Validation"
+          jira-url: ${{ secrets.JIRA_URL }}
+          jira-email: ${{ secrets.JIRA_EMAIL }}
+          jira-token: ${{ secrets.JIRA_TOKEN }}
+          jira-prefix: "SCRUM"
