@@ -3,6 +3,10 @@ name: Test Jira Validation
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  actions: read
+
 jobs:
   validate:
     runs-on: ubuntu-latest
