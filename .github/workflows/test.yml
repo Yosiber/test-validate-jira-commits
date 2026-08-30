@@ -17,6 +17,15 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: List workflows
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Server: ${{ github.server_url }}"
+          echo "Workflows:"
+          gh workflow list --all
+
       - name: Validate Jira Commits
         uses: ./.github/actions/validate-jira-commits
         with:
