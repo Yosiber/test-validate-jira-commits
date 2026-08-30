@@ -4,7 +4,7 @@ description: Extracts commits since the last successful workflow run and validat
 
 inputs:
   workflow-name:
-    description: 'The Workflow to be validated against the GitHub API'
+    description: 'The Workflow to be validatehd against the GitHub API'
     required: true
   jira-url:
     description: 'Jira Base URL to Fetch'
