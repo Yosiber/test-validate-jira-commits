@@ -182,7 +182,7 @@ runs:
           if [ "$ISSUE_STATUS_NORMALIZED" != "Nuevo" ] \
              && [ "$ISSUE_STATUS_NORMALIZED" != "En Curso" ]; then
               echo "ERROR: $ISSUE_KEY has status '$ISSUE_STATUS'."
-              echo "Only 'New' and 'En Curso' are allowed."
+              echo "Only 'Nuevo' and 'En Curso' are allowed."
               FAILED=1
               continue
           fi
