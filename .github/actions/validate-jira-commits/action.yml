@@ -161,6 +161,10 @@ runs:
             FAILED=1
             continue
           fi
+        
+          echo "==== JIRA RESPONSE ===="
+          echo "$RESPONSE"
+          echo "======================="
 
           ISSUE_TYPE=$(echo "$RESPONSE" | jq -r '.fields.issuetype.name')
           ISSUE_STATUS=$(echo "$RESPONSE" | jq -r '.fields.status.name')
