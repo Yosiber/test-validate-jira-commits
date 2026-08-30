@@ -173,8 +173,8 @@ runs:
 
           echo "Type: $ISSUE_TYPE | Status: $ISSUE_STATUS"
 
-          if [ "$ISSUE_TYPE" != "Task" ]; then
-            echo "ERROR: $ISSUE_KEY is type '$ISSUE_TYPE'. Only 'Task' is allowed."
+          if [ "$ISSUE_TYPE" != "Tarea" ]; then
+            echo "ERROR: $ISSUE_KEY is type '$ISSUE_TYPE'. Only 'Tarea' is allowed."
             FAILED=1
             continue
           fi
